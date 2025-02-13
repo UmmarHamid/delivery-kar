@@ -33,23 +33,23 @@ export default function RootLayout({
       <body className='bg-gray-50 text-gray-900'>
         <nav className='flex-between p-4 bg-white shadow-md'>
           <Link href='/'>Home</Link>
-          <div>
-            {!user ? (
-              <>
-                <Link href='/auth/login' className='mr-4'>
-                  Login
-                </Link>
-                <Link href='/auth/signup'>Signup</Link>
-              </>
-            ) : (
-              <>
-                <span>Welcome, {user.name}</span>
-                <button onClick={handleLogout} className='ml-4 btn-secondary'>
-                  Logout
-                </button>
-              </>
-            )}
-          </div>
+          {user ? (
+            <>
+              <Link href='/dashboard' className='mr-4'>
+                Dashboard
+              </Link>
+              <button onClick={handleLogout} className='ml-4 btn-secondary'>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href='/auth/login' className='mr-4'>
+                Login
+              </Link>
+              <Link href='/auth/signup'>Signup</Link>
+            </>
+          )}
         </nav>
         <main className='container'>{children}</main>
       </body>
